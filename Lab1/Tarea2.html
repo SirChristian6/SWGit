@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Derivado de "Tarea2"</title>
+    </head>
+    <body>
+        <form>
+            Operando1:<br>
+            <input type="number" id="op1" name="op1"><br><br>
+            Operador:
+            <select id="opr" name="operator" size="1">
+                <option value="sum">+</option>
+                <option value="res">-</option>
+                <option value="mul">*</option>
+                <option value="div">/</option>
+            </select><br><br>
+             Operando2:<br>
+            <input type="number" id="op2" name="op2"><br><br>
+           
+            Resultado:<br>
+            <input type="number" id="res" name="res"><br><br>
+            <button type="button" onClick="comprobar()">Comprobar</button>
+            <button type="reset" onClick="borrar()">Reset</button>
+            <div  id="correccion">
+            </div>
+        </form>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script>
+            
+            function comprobar() {
+                var op1= parseInt($("#op1").val());
+                var op2= parseInt($("#op2").val());
+                var opr= $("#opr").val();
+                var res= parseInt($("#res").val());
+                var resultado;
+                if(opr=="sum")
+                    resultado=op1+op2;
+                else if(opr=="res")
+                    resultado=op1-op2;
+                else if(opr=="mul")
+                    resultado=op1*op2;
+                else if(opr=="div")
+                    resultado=op1/op2;
+                
+                var text;  
+                if(resultado==res)
+                    text="Correcto";
+                else
+                    text="Incorrecto";
+                $("#correccion").text(text);
+            }
+            function borrar(){
+                $("#correccion").text("");
+            }
+        </script>
+    </body>
+</html>
